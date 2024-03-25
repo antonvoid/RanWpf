@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RanWpf", "RanWpf\RanWpf.csproj", "{A593E959-0D9E-4B79-8D17-9251B871286E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{7F2621EC-F531-49FD-B397-3AE2EF47FFA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A593E959-0D9E-4B79-8D17-9251B871286E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A593E959-0D9E-4B79-8D17-9251B871286E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A593E959-0D9E-4B79-8D17-9251B871286E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A593E959-0D9E-4B79-8D17-9251B871286E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B07C91D-C916-4049-8E9E-5825982FA432}
+	EndGlobalSection
+EndGlobal
