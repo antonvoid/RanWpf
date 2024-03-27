@@ -63,7 +63,7 @@ namespace RanWpf
         private int TypeChecking(Byte[] bytes)
         {
             (int, int)[] frame1_8 = new (int, int)[] { (0x2c, 0xfa), (0x2d, 0), (0x2d, 1), (0x2d, 2), (0x2d, 3), (0x2d, 4), (0x2d, 5), (0x2d, 6) };
-            int[] frame9_10 = new int[] { 0x2f, 30 };
+            int[] frame9_10 = new int[] { 0x2f, 0x30 };
             if (bytes[3] == frame9_10[1])
             {
                 return 10;
@@ -114,6 +114,7 @@ namespace RanWpf
         private int SearchForNumberingErrors(Byte[] bytes)
         {
             int type = TypeChecking(bytes)-1;
+            Byte[] nnp = new Byte[4];
             if (type == 9)
             {
                 return 0;
@@ -122,36 +123,44 @@ namespace RanWpf
             {
                 if(type<=7 && type>=0)
                 {
-                    NumPuck[type] = BitConverter.ToInt32(bytes, 5);
+                    nnp = [bytes[8], bytes[7], bytes[6], bytes[5]];
+                    NumPuck[type] = BitConverter.ToInt32(nnp);
                 }
                 else
                 {
-                    NumPuck[type] = BitConverter.ToInt32(bytes, 4);
+                    nnp = [bytes[7], bytes[6], bytes[5], bytes[4]];
+                    NumPuck[type] = BitConverter.ToInt32(nnp);
                 }
-                
+        
                 return 0;
             }
             else
             {
                 int NewNumPuck = 0;
-                if (type <= 7 && type >= 0)
+        
+                if (type==8)
                 {
-                    NewNumPuck = BitConverter.ToInt32(bytes, 5);
+                    nnp = [bytes[7], bytes[6], bytes[5], bytes[4]];
+                    NewNumPuck = BitConverter.ToInt32(nnp);          
                 }
                 else
                 {
-                    NewNumPuck = BitConverter.ToInt32(bytes, 4);
+                    nnp = [bytes[8], bytes[7], bytes[6], bytes[5]];
+                    NewNumPuck = BitConverter.ToInt32(nnp);
                 }
-                if ( NewNumPuck - NumPuck[type] > 1)
+                if ( NewNumPuck - NumPuck[type] == 1)
                 {
-                    return 1;
+                    NumPuck[type] = NewNumPuck;
+                    return 0;
                 }
                 else 
                 {
-                    return 0;
-                }               
+                    NumPuck[type] = NewNumPuck;
+                    return 1;
+                }
+        
             }
-            
+    
         }
 
         // метод для поиска кадров
